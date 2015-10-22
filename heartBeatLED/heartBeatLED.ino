@@ -18,11 +18,16 @@ void loop() {
   val = analogRead(inPin);
   float voltage = map(val, 0, 1023, 0, 5000);
   // turn the ledPin on
+  voltage = voltage/1000;
   Serial.println(voltage);
 
   // TODO: IMPLEMENT MOVING AVERAGE CODE AND UPDATE DIGITAL WRITES TO CORRECT
   // PINS
-  if (val > 410)
+  float heartbeat0 = 2;
+  float heartbeat1 = 1;
+  
+  //When should lights turn on:
+  if (voltage > heartbeat0)
   {
   digitalWrite(ledPin1, HIGH);
   }
@@ -30,7 +35,7 @@ void loop() {
   {
     digitalWrite(ledPin1, LOW);
   }
-  if (val > 205)
+  if (voltage > heartbeat1)
   {
     digitalWrite(ledPin2, HIGH);
   }
