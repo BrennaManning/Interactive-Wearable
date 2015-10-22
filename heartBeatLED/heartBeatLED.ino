@@ -1,4 +1,5 @@
-
+unsigned long time;
+byte sleepTime = 40;
 
 int inPin = A0;    // select the input pin for the potentiometer
 int ledPin1 = 12;// select the pin for the LED
@@ -14,6 +15,8 @@ void setup() {
 }
 
 void loop() {
+
+  time = millis();
   // read the value from the sensor:
   val = analogRead(inPin);
   float voltage = map(val, 0, 1023, 0, 5000);
@@ -25,7 +28,7 @@ void loop() {
   // PINS
   float heartbeat0 = 2;
   float heartbeat1 = 1;
-  
+
   //When should lights turn on:
   if (voltage > heartbeat0)
   {
@@ -43,4 +46,5 @@ void loop() {
   {
     digitalWrite(ledPin2, LOW);
   }
+  delay(sleepTime - (millis() - time));
 }
