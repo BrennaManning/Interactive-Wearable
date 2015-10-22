@@ -8,21 +8,23 @@ float voltage = 0.00;  // variable to store the value coming from the sensor
 
 void setup() {
   // declare the ledPin as an OUTPUT:
-  pinMode(ledPin1, OUTPUT); 
-  pinMode(ledPin2, OUTPUT); 
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
   // read the value from the sensor:
-  val = analogRead(inPin);    
-  float voltage = map(val, 0, 1023, 0, 5.00);
+  val = analogRead(inPin);
+  float voltage = map(val, 0, 1023, 0, 5000);
   // turn the ledPin on
   Serial.println(voltage);
-  
+
+  // TODO: IMPLEMENT MOVING AVERAGE CODE AND UPDATE DIGITAL WRITES TO CORRECT
+  // PINS
   if (val > 410)
   {
-  digitalWrite(ledPin1, HIGH);  
+  digitalWrite(ledPin1, HIGH);
   }
   else
   {
