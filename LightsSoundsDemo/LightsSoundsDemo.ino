@@ -39,23 +39,15 @@ void setup()
   // Set the speed to start, from 0 (off) to 255 (max speed)
   myMotor->setSpeed(0);
   myMotor->run(FORWARD);
-  // turn on motor
-  myMotor->run(RELEASE);
 
   myMotor1->setSpeed(0);
   myMotor1->run(FORWARD);
-  // turn on motor
-  myMotor1->run(RELEASE);
-
+  
   myMotor2->setSpeed(0);
   myMotor2->run(FORWARD);
-  // turn on motor
-  myMotor2->run(RELEASE);
 
   myMotor3->setSpeed(0);
   myMotor3->run(FORWARD);
-  // turn on motor
-  myMotor3->run(RELEASE);
 
   // Define pin modes
   beat_length = 1000;
@@ -85,20 +77,22 @@ void beat(int beat_length)
 
 void breath(int breath_length)
 {
-  int phase = time % breath_length;
-  if (phase < 3 * breath_length / 4)
+  long phase = time % breath_length;
+  int m_speed;
+  if (phase < 2 * breath_length / 4)
   {
-    m_speed = 180 * phase * 4 / 3 / breath_length);
+    m_speed = 100 * phase / (2 * breath_length / 4);
   } else
   {
-    int exhale_time = breath_length - phase;
-    m_speed = 180 * exhale_time * 4 / breath_length);
+    long exhale_time = breath_length - phase;
+    m_speed = 100 * exhale_time / (2 * breath_length / 4);
   }
   myMotor->setSpeed(m_speed);
   myMotor1->setSpeed(m_speed);
   myMotor2->setSpeed(m_speed);
   myMotor3->setSpeed(m_speed);
-
+  Serial.print("Commanding motors to :");
+  Serial.println(m_speed);
 }
 
 
@@ -109,8 +103,8 @@ void loop() {
   // byte beat_num = 0;
   beat_length = 1000;
   beat(beat_length);
-  breath_length = 3000;
-  breath(breath_length)
+  breath_length = 6000;
+  breath(breath_length);
   // while(beat_num < beat_pre_death + beats_while_dieing)
   // {
   //   beat(beat_length);
@@ -122,4 +116,8 @@ void loop() {
   // tone(speaker, power);
   // digitalWrite(lights, 0);
   // delay(3000);
+//  myMotor->run(RELEASE);
+//  myMotor1->run(RELEASE);
+//  myMotor2->run(RELEASE);
+//  myMotor3->run(RELEASE);
 }
