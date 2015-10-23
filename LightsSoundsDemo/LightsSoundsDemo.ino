@@ -14,6 +14,7 @@ Adafruit_DCMotor *myMotor2 = AFMS.getMotor(3);
 Adafruit_DCMotor *myMotor3 = AFMS.getMotor(4);
 
 // Define constants
+int brightness = 20;
 int power = 1000;
 int count = 0;
 int beat_pre_death = 10;
@@ -66,19 +67,19 @@ void beat(int beat_length)
   int phase = time % beat_length;
   if (phase < beat_length / 10)
   {
-    tone(speaker, power);
-    digitalWrite(lights, 1);
+    noTone(speaker);
+    digitalWrite(lights, 0);
   } else if (phase < 3 * beat_length / 20)
   {
-    noTone(speaker);
-    digitalWrite(lights, 0);
-  } else if (phase < 18 * beat_length / 20)
-  {
     tone(speaker, power);
-    digitalWrite(lights, 1);
-  } else {
+    analogWrite(lights, brightness);
+  } else if (phase < 19 * beat_length / 20)
+  {
     noTone(speaker);
     digitalWrite(lights, 0);
+  } else {
+    tone(speaker, power);
+    analogWrite(lights, brightness);
   }
 }
 
