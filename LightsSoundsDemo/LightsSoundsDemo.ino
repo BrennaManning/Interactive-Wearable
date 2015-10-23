@@ -15,7 +15,7 @@ Adafruit_DCMotor *myMotor3 = AFMS.getMotor(4);
 
 // Define constants
 int brightness = 20;
-int power = 1000;
+int pitch = 70;
 int count = 0;
 int beat_pre_death = 10;
 int beat_length;
@@ -63,14 +63,14 @@ void beat(int beat_length)
     digitalWrite(lights, 0);
   } else if (phase < 3 * beat_length / 20)
   {
-    tone(speaker, power);
+    tone(speaker, pitch);
     analogWrite(lights, brightness);
   } else if (phase < 19 * beat_length / 20)
   {
     noTone(speaker);
     digitalWrite(lights, 0);
   } else {
-    tone(speaker, power);
+    tone(speaker, pitch);
     analogWrite(lights, brightness);
   }
 }
@@ -95,29 +95,11 @@ void breath(int breath_length)
   Serial.println(m_speed);
 }
 
-
 void loop() {
-
   time = millis();
 
-  // byte beat_num = 0;
   beat_length = 1000;
   beat(beat_length);
   breath_length = 6000;
   breath(breath_length);
-  // while(beat_num < beat_pre_death + beats_while_dieing)
-  // {
-  //   beat(beat_length);
-  //   beat_num += 1;
-  //   beat_length -= 100;
-  // }
-
-  // Create constant light and sound
-  // tone(speaker, power);
-  // digitalWrite(lights, 0);
-  // delay(3000);
-//  myMotor->run(RELEASE);
-//  myMotor1->run(RELEASE);
-//  myMotor2->run(RELEASE);
-//  myMotor3->run(RELEASE);
 }
