@@ -65,19 +65,19 @@ void beat(int beat_length)
   int phase = time % beat_length;
   if (phase < beat_length / 10)
   {
-    tone(speaker, power);
-    digitalWrite(lights, 1);
+    noTone(speaker);
+    digitalWrite(lights, 0);
   } else if (phase < 3 * beat_length / 20)
   {
-    noTone(speaker);
-    digitalWrite(lights, 0);
-  } else if (phase < 18 * beat_length / 20)
-  {
     tone(speaker, power);
     digitalWrite(lights, 1);
-  } else {
+  } else if (phase < 19 * beat_length / 20)
+  {
     noTone(speaker);
     digitalWrite(lights, 0);
+  } else {
+    tone(speaker, power);
+    digitalWrite(lights, 1);
   }
 }
 
