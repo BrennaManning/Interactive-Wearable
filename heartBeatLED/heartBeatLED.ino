@@ -1,9 +1,9 @@
 unsigned long startTime;
 
-byte num_seconds = 4;
+byte num_seconds = 2;
 int sleepTime = 50; // ms, read 20 times per second
 
-const int numReadings = 80; // TODO: THIS SHOULDNT BE HARDCODED
+const int numReadings = 40; // TODO: THIS SHOULDNT BE HARDCODED
 
 int inPin = A0;    // select the input pin for the potentiometer
 int ledPin = 12;  // select the pin for the LED
@@ -12,7 +12,7 @@ int voltage; // variable to store read-in
 
 int readings[numReadings];
 int readIndex = 0;              // the index of the current reading
-int total = 0;                  // the running total
+unsigned long total = 0;                  // the running total
 int average = 0;
 
 void setup() {
@@ -31,9 +31,13 @@ void loop() {
 
   // get the start time
   startTime = millis();
-
+  
+  Serial.print("Previous total: ");
+  Serial.print(total);
   // subtract the last reading:
   total = total - readings[readIndex];
+  Serial.print("...New total: ");
+  Serial.print(total);
 
   // read the value from the sensor and map to mV
   voltage = analogRead(inPin);
@@ -42,6 +46,8 @@ void loop() {
   //
   readings[readIndex] = voltage;
   total = total + voltage;
+  Serial.print("...New total: ");
+  Serial.print(total);
   readIndex = readIndex + 1;
     // if we're at the end of the array...
   if (readIndex >= numReadings) {
@@ -50,7 +56,7 @@ void loop() {
   }
 
   average = total / numReadings;
-  Serial.print("Current reading: ");
+  Serial.print("...Current reading: ");
   Serial.print(voltage);
   Serial.print("...Average: ");
   Serial.println(average);
