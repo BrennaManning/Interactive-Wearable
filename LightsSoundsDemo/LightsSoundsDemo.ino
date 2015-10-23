@@ -18,6 +18,7 @@ int power = 1000;
 int count = 0;
 int beat_pre_death = 10;
 int beat_length;
+int breath_length;
 int beats_while_dieing = 5;
 
 unsigned long time;
@@ -81,6 +82,24 @@ void beat(int beat_length)
   }
 }
 
+void breath(int breath_length)
+{
+  int phase = time % breath_length;
+  if (phase < 3 * breath_length / 4)
+  {
+    m_speed = 180 * phase * 4 / 3 / breath_length);
+  } else
+  {
+    int exhale_time = breath_length - phase;
+    m_speed = 180 * exhale_time * 4 / breath_length);
+  }
+  myMotor->setSpeed(m_speed);
+  myMotor1->setSpeed(m_speed);
+  myMotor2->setSpeed(m_speed);
+  myMotor3->setSpeed(m_speed);
+
+}
+
 
 void loop() {
 
@@ -89,6 +108,8 @@ void loop() {
   // byte beat_num = 0;
   beat_length = 1000;
   beat(beat_length);
+  breath_length = 3000;
+  breath(breath_length)
   // while(beat_num < beat_pre_death + beats_while_dieing)
   // {
   //   beat(beat_length);
