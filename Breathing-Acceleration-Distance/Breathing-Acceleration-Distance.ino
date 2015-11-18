@@ -20,8 +20,8 @@ const int accelerometer_motor_out_pin = 6;
 
 // Define input pins
 const int breathing_in_pin = A0;
-const int accel_in_pin = A1;
-const int distance_in_pin = A2;
+const int distance_in_pin = A1;
+const int accel_in_pin = A2;
 
 
 void setup()
@@ -33,25 +33,35 @@ void setup()
 }
 
 // takes in current breathing sensor in mV and returns our output in mV (0-5000)
+// TODO: IMPLEMENT THIS LOGIC
 int get_breathing_out(int breathing_in)
 {
   int output_value = breathing_in;
   return output_value;
 }
 
+// takes in current distance sensor in mV and returns our output in mV (0-5000)
+// TODO: IMPLEMENT THIS LOGIC
+int get_distance_out(int distance_in)
+{
+  int output_value = distance_in;
+  return output_value;
+}
+
 // takes in current accelerometer sensor in mV and returns our output in mV
 // (0-5000)
+// TODO: IMPLEMENT THIS LOGIC
 int get_accel_out(int accel_in)
 {
   int output_value = accel_in;
   return output_value;
 }
 
-// takes in current distance sensor in mV and returns our output in mV (0-5000)
-int get_breath_out(int distance_in)
+void set_outputs(int breathing_out, int distance_out, int accel_out)
 {
-  int output_value = distance_in;
-  return output_value;
+  analogWrite(breathing_lights_out_pin, map(breathing_out, 0, 5000, 0, 255));
+  analogWrite(distance_motor_out_pin, map(distance_out, 0, 5000, 0, 255));
+  analogWrite(accelerometer_motor_out_pin, map(accel_out, 0, 5000, 0, 255));
 }
 
 void loop() {
@@ -64,7 +74,14 @@ void loop() {
   accelerometer_sensor_value = map(analogRead(accel_in_pin), 0, 1023, 0, 5000);
 
   // get the output values we want to send to the breathing lights, the distance
-  // motors, and the accelerometer motors.
+  // motors, and the accelerometer motors. These values range from 0-5000 mV
+
+  breathing_lights_ouput = get_breathing_out(breathing_sensor_value);
+  distance_motor_output = get_distance_out(distance_sensor_value);
+  accel_vibration_output = get_accel_out(accelerometer_sensor_value);
+
+  set_outputs(breathing_lights_ouput, distance_motor_output,
+              accel_vibration_output);
 
   delay(20);
 }
