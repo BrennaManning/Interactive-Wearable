@@ -1,18 +1,18 @@
+
 // Define constants
 int brightness = 255;
 int power = 1000;
 int count = 0;
 
-int breathing_sensor_value = 0;
 int distance_sensor_value = 0;
 int accelerometer_sensor_value = 0;
 
-int breathing_lights_and_motor_ouput = 0;        // value output to the PWM (analog out)
 int distance_motor_output = 0;        // value output to the PWM (analog out)
 int accel_speaker_output = 0;        // value output to the PWM (analog out)
 
 int tone_threshold = 250; // voltage diff at which to play a tone
-int max_volume_voltage = 1000; // voltage at which to play the highest pitch tone
+int max_volume_voltage = 1000; // voltage at which to play the highest pitch
+                               // tone
 
 int low_speaker_tone = 50;
 int high_speaker_tone = 250;
@@ -20,12 +20,10 @@ int high_speaker_tone = 250;
 unsigned long time;
 
 // Define output pins (PWM)
-const int breathing_lights_out_pin = 3;
 const int distance_motor_out_pin = 5;
 const int accelerometer_speaker_out_pin = 6;
 
 // Define input pins
-const int breathing_in_pin = A0;
 const int distance_in_pin = A1;
 const int accel_in_pin = A2;
 
@@ -33,7 +31,6 @@ const int accel_in_pin = A2;
 void setup()
 {
   Serial.begin(9600);           // set up Serial library at 9600 bps
-  pinMode(breathing_lights_out_pin, OUTPUT);
   pinMode(distance_motor_out_pin, OUTPUT);
   pinMode(accelerometer_speaker_out_pin, OUTPUT);
 }
@@ -51,14 +48,13 @@ int get_distance_out(int distance_in)
 
 // takes in current accelerometer sensor in mV and returns our output tone.
 // 0 for no tone, and 50-250 otherwise
-// TODO: IMPLEMENT THIS LOGIC
 int get_accel_tone(int accel_in)
 {
   int diff = abs(accel_in - 2500);
   int output_value = 0;
   if (diff > tone_threshold)
   {
-    output_value = map(diff,  tone_threshold, max_volume_voltage,
+    output_value = map(diff, tone_threshold, max_volume_voltage,
                        low_speaker_tone, high_speaker_tone);
   }
   return min(output_value, high_speaker_tone);
@@ -82,7 +78,6 @@ void loop() {
   time = millis();
 
   // read the analog in value and covert them to millivolts:
-  breathing_sensor_value = map(analogRead(breathing_in_pin), 0, 1023, 0, 5000);
   distance_sensor_value = map(analogRead(distance_in_pin), 0, 1023, 0, 5000);
   accelerometer_sensor_value = map(analogRead(accel_in_pin), 0, 1023, 0, 5000);
 
@@ -95,5 +90,5 @@ void loop() {
   set_outputs(distance_motor_output,
               accel_speaker_output);
 
-  delay(20);
+  delay(1000);
 }
