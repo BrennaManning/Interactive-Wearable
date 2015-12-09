@@ -8,17 +8,16 @@
 
 // Define constants
 int brightness = 255;
-// int power = 1000;
-// int count = 0;
 
 int distance_sensor_value = 0;
 int accelerometer_sensor_value = 0;
-// int breathing_sensor_value = 0;
+int breathing_sensor_value = 0;
 
 int servo_out = 0;        // value output to the PWM (analog out)
 int accel_leds_out = 0;        // value output to the PWM (analog out)
+int breathing_leds_out = 0;        // value output to the PWM (analog out)
 
-int accel_threshold = 500; // voltage diff at which to turn LEDs on.
+int accel_threshold = 700; // voltage diff at which to turn LEDs on.
 int distance_threshold = 250; // voltage diff at which to turn LEDs on.
 
 unsigned long time;
@@ -26,7 +25,8 @@ unsigned long time;
 // Define output pins (PWM)
 const int servo_out_pin_L = 9;
 const int servo_out_pin_R = 10;
-const int accel_leds_out_pin = 6;
+const int accel_leds_out_pin = 3;
+const int breathing_leds_out_pin = 5;
 
 // Define input pins
 const int distance_in_pin = A1;
@@ -72,20 +72,24 @@ int get_accel_out(int accel_in)
   int output_value = 0;
   if (diff > accel_threshold)
   {
-    // this causes output to flicker twice a second.
-    if (time % 500 < 400) {
-      output_value = 5000;
-    }
-
+     output_value = 5000;
   }
   return output_value;
 }
 
-void set_outputs(int servo_out, int accel_leds)
+int get_breathing_out(int breathing_in)
+{
+
+  return breathing_in;
+}
+
+void set_outputs(int servo_out, int accel_leds, int breathing_out)
 {
   analogWrite(accel_leds_out_pin, map(accel_leds, 0, 5000, 0, brightness));
   servo_R.write(servo_out);
   servo_L.write(servo_out);
+  analogWrite(breathing_leds_out_pin, map(breathing_out, 0, 5000, 0, brightness));
+  
 
 }
 
@@ -96,18 +100,21 @@ void loop() {
   // read the analog in value and covert them to millivolts:
   distance_sensor_value = map(analogRead(distance_in_pin), 0, 1023, 0, 5000);
   accelerometer_sensor_value = map(analogRead(accel_in_pin), 0, 1023, 0, 5000);
-  // breathing_sensor_value = map(analogRead(breathing_sensor_value), 0, 1023, 0, 5000);
+  breathing_sensor_value = map(analogRead(breathing_in_pin), 0, 1023, 0, 5000);
 
   Serial.print("Accelerometer value: ");
   Serial.print(accelerometer_sensor_value);
-  Serial.print(". Distance value: ");
-  Serial.println(distance_sensor_value);
+  Serial.print(". Breathing value: ");
+  Serial.print(breathing_sensor_value);
 
   servo_out = get_distance_out(distance_sensor_value);
   accel_leds_out = get_accel_out(accelerometer_sensor_value);
+  breathing_leds_out = get_breathing_out(breathing_sensor_value);
 
   set_outputs(servo_out,
-              accel_leds_out);
+              accel_leds_out, breathing_leds_out);
+  Serial.print(". Accel output: ");
+  Serial.println(accel_leds_out);
 
   delay(100);
 }
