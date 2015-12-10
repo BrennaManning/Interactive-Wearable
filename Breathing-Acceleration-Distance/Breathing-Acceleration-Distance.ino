@@ -74,6 +74,14 @@ int get_accel_out(int accel_in)
   {
      output_value = 5000;
   }
+
+  if (time % 1000 < 500)
+  {
+    output_value = 5000;
+  } else {
+    output_value = 0;
+  }
+
   return output_value;
 }
 
@@ -89,7 +97,7 @@ void set_outputs(int servo_out, int accel_leds, int breathing_out)
   servo_R.write(servo_out);
   servo_L.write(servo_out);
   analogWrite(breathing_leds_out_pin, map(breathing_out, 0, 5000, 0, brightness));
-  
+
 
 }
 
