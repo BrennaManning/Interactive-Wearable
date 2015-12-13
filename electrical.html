@@ -53,25 +53,30 @@
 							<div class="inner">
 								<h3>Our ProtoBoard</h3>
 									<div class="12u"><span class="image fit"><img src="images/protoboard.jpg" alt="" /></span></div>
-								<h3>Full Circuit Diagram</h3>
+								<h3>Sensing Circuit Diagram</h3>
 									<div class="12u"><span class="image fit"><img src="images/circuitdiagram.png" alt="" /></span></div>
-								
-								<h3>Sensing</h3>
-								<p>Our wearable collects and displays data from 3 sensors on the user's body. </p>
+
+								<p>Our wearable collects from 3 sensors on the user's body. </p>
 								<ul>
 									<li>Breathing</li>
 									<li>Acceleration</li>
-									<li>Distance</li>
+									<li>Proximity</li>
 								</ul>
+
+								<h3>Powering our Components</h3>
+
+								<p>SHANE PUT STUFF ABOUT THE BATTERY HERE. A voltage regulator creates a 5V rail from the 7.4V battery, allowing us to power the Arduino, our op-amps, and the servos. To create a 2.5V rail, we use a voltage divider and a buffer. We use the 7.4V from the battery to power our LED components.</p>
 
 								<h3>Breathing</h3>
 								<div class="12u"><span class="image right"><img src="images/fabric.jpg" alt="" /></span></div>
 								<div class="12u"><span class="image right"><img src="images/breathwaveform.jpg" HEIGHT="80" WIDTH="10" alt="" /></span></div>
 
-								<p>We created a belt that is used to sense breathing. We made this using a strip of the conductive fabric shown on the right. The conductive fabric acts as a variable resistor. The resistance across it changes slightly when the fabric is either stretched or compressed. A segment of the belt-like piece around the wearer's ribs is made of this fabric.  When the wearer breathes, the conductive fabric stretches. This change in resistance leads to a very slight change in the voltage output on the other side.</p> 
+
+								<p>In order to visualize a user's breathing, we created a belt that would allow us to sense the expanding and contracting of the user's waist. We created a adjustable belt with an elastic piece of conductive fabric in it, shown on the right. The fabric acts as a variable resistor, with a higher resistance when stretched. The fabric is in a voltage divider with a 100&#8486 resistor. The resistance of the piece of fabric varies between roughly 8&#8486-14&#8486, so the voltage at the center of the divider varies between 0.37V and 0.61V. We high pass filter the output of the divider to center the signal around 2.5V, and then we amplify if with a gain of 201, allowing us to detect even the smallest abdominal expansions and contractions. A large gain is necessary because though the resistance can vary from 8&#8486-14&#8486, this is in ideal conditions, and generally a person breathing will only cause the fabric's resistance to vary by a fraction of its potential.</p>
+
 
 								<h3> Acceleration</h3>
-								<p>Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat.</p>
+								<p>The accerometer circuit is similar to the breathing circuit. We center the signal around 2.5V with a high pass filter and then amplify it with a gain of 389. We need a large gain because a wearable will not experience large accelerations. This amplification introduces noise in the signal, so we low-pass-filter the output of the filter.</p>
 
 								<h3> Distance </h3>
 								<div class="12u"><span class="image left"><img src="images/talonsinmotion.gif" alt="" /></span></div>
@@ -80,7 +85,7 @@
 								<hr />
 
 								<h4>See our <a href="software.html" class = SOFTWARE><span class="label">Software</span></a> and <a href="mechanical.html" class = MECHANICAL><span class="label">Mechanical</span></a> pages for more info on how sensing and visualizations were implemented.</h4>
-								
+
 
 
 							</div>
