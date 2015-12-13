@@ -54,7 +54,7 @@
 								<h3>Our ProtoBoard</h3>
 									<div class="12u"><span class="image fit"><img src="images/protoboard.jpg" alt="" /></span></div>
 								<h3>Sensing Circuit Diagram</h3>
-									<div class="12u"><span class="image fit"><img src="images/circuitdiagram.png" alt="" /></span></div>
+									<div class="12u"><span class="image fit"><img src="images/circuitdiagram2.png" alt="" /></span></div>
 
 								<p>Our wearable collects from 3 sensors on the user's body. </p>
 								<ul>
@@ -65,7 +65,7 @@
 
 								<h3>Powering our Components</h3>
 
-								<p>SHANE PUT STUFF ABOUT THE BATTERY HERE. A voltage regulator creates a 5V rail from the 7.4V battery, allowing us to power the Arduino, our op-amps, and the servos. To create a 2.5V rail, we use a voltage divider and a buffer. We use the 7.4V from the battery to power our LED components.</p>
+								<p>SHANE PUT STUFF ABOUT THE BATTERY HERE. A voltage regulator creates a 5V rail from the 7.4V battery, allowing us to power the Arduino, our op-amps, and the servos. To create a 2.5V rail, we use a voltage divider and a buffer. We use the 7.4V from the battery to power our LED components, and use transistors to allow the arduino to controll the current flowing through the LEDs.</p>
 
 								<h3>Breathing</h3>
 								<div class="12u"><span class="image right"><img src="images/fabric.jpg" alt="" /></span></div>
@@ -78,7 +78,8 @@
 
 								<h3> Distance </h3>
 								<div class="12u"><span class="image left"><img src="images/talonsinmotion.gif" alt="" /></span></div>
-								<p>Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui, at vestibulum sit amet, auctor bibendum neque.</p>
+
+								<p>To sense distance, we wire an IR distance sensor to an analog input of the arduino. Based on the sensor's voltage, we command the servos to move the spikes back and forth. The larger the sensed voltage, the quicker the spikes move.</p>
 
 								<hr />
 
