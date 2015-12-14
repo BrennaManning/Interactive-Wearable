@@ -35,6 +35,8 @@
 											<li><a href="software.html">Software</a></li>
 											<li><a href="aboutus.html">About Us</a></li>
 											<li><a href="finalproduct.html">Final Product</a></li>
+											<li><a href="financial.html">Financial</a></li>
+											<li><a href="gallery.html">Photo Gallery</a></li>
 											<li><a href="https://parasights.wordpress.com/"> Check Out Our Blog</a></li>
 										</ul>
 									</div>
@@ -52,9 +54,18 @@
 						<section class="wrapper style5">
 							<div class="inner">
 								<h3>Our ProtoBoard</h3>
-									<div class="12u"><span class="image fit"><img src="images/protoboard.jpg" alt="" /></span></div>
-								<h3>Sensing Circuit Diagram</h3>
-									<div class="12u"><span class="image fit"><img src="images/circuitdiagram2.png" alt="" /></span></div>
+
+
+
+									<div class="12u"><span class="image fit"><img src="images/proto1.JPG"alt="" /></span></div>
+
+
+									<div class="12u"><span class="image fit"><img src="images/proto2.JPG"alt="" /></span></div>
+
+
+									<hr>
+								<h3>Sensing Circuit Schematic</h3>
+									<div class="12u"><span class="image fit"><img src="images/circuitdiagram3.jpg" alt="" /></span></div>
 
 								<p>Our wearable collects from 3 sensors on the user's body. </p>
 								<ul>
@@ -67,21 +78,41 @@
 
 								<p>SHANE PUT STUFF ABOUT THE BATTERY HERE. A voltage regulator creates a 5V rail from the 7.4V battery, allowing us to power the Arduino, our op-amps, and the servos. To create a 2.5V rail, we use a voltage divider and a buffer. We use the 7.4V from the battery to power our LED components, and use transistors to allow the arduino to control whether current flows from 7.4V through the LEDs to ground.</p>
 
+
+
 								<h3>Breathing</h3>
 								<div class="12u"><span class="image right"><img src="images/fabric.jpg" alt="" /></span></div>
 								<div class="12u"><span class="image right"><img src="images/breathwaveform.jpg" HEIGHT="80" WIDTH="10" alt="" /></span></div>
 
-
-								<p>In order to visualize a user's breathing, we created a belt that would allow us to sense the expanding and contracting of the user's waist. We created an adjustable belt with an elastic piece of conductive fabric in it, shown on the right. The fabric acts as a variable resistor, with a higher resistance when stretched. The fabric is in a voltage divider with a 100&#8486 resistor. The resistance of the piece of fabric varies between roughly 8&#8486-14&#8486, so the voltage at the center of the divider varies between 0.37V and 0.61V. We high pass filter the output of the divider to center the signal around 2.5V, and then we amplify if with a gain of 201, allowing us to detect even the smallest abdominal expansions and contractions. A large gain is necessary because though the resistance can vary from 8&#8486-14&#8486, this is in ideal conditions, and generally a person breathing will only cause the fabric's resistance to vary by a fraction of its potential.</p>
+								<p>In order to visualize a user's breathing, we created a belt to sense the expanding and contracting of the user's waist. We created an adjustable belt with an elastic piece of conductive fabric in it, shown on the right. The fabric acts as a variable resistor, with a higher resistance when stretched. The fabric is in a voltage divider with a 100&#8486 resistor. The resistance varies between roughly 8&#8486-14&#8486, so the voltage at the center of the divider varies between 0.37V and 0.61V. We high pass filter the output of the divider to center the signal around 2.5V, and then we amplify it with a gain of 201, allowing us to detect even the smallest abdominal expansions and contractions. A large gain is necessary because though the resistance can vary from 8&#8486-14&#8486, this is in ideal conditions, and generally a person breathing will only cause the fabric's resistance to vary by a fraction of its potential.</p>
 
 
 								<h3> Acceleration</h3>
 								<p>The accerometer circuit is similar to the breathing circuit. We center the signal around 2.5V with a high pass filter and then amplify it with a gain of 389. We need a large gain because a wearable will not experience large accelerations. This amplification introduces noise in the signal, so we low-pass-filter the output of the amplifier.</p>
 
+								<h5>Breathing Sensing Circuit Schematic</h5>
+								<div class="12u"><span class="image center"><img src="images/circuitbreathing.png" alt="" /></span></div>
+
+								<h3> Acceleration</h3>
+								<p>The accerometer circuit is similar to the breathing circuit. We center the signal around 2.5V with a high pass filter and then amplify it with a gain of 389. We need a large gain because a wearable will not experience large accelerations. This amplification introduces noise in the signal, so we low-pass-filter the output of the filter.</p>
+								<h5>Acceleration Sensing Circuit Schematic</h5>
+								<div class="12u"><span class="image center"><img src="images/circuitaccel.png" alt="" /></span></div>
+
 								<h3> Distance </h3>
 								<div class="12u"><span class="image left"><img src="images/talonsinmotion.gif" alt="" /></span></div>
 
-								<p>To sense distance, we wire an IR distance sensor to an analog input of the arduino. Based on the sensor's voltage, we command the servos to move the spikes back and forth. The larger the sensed voltage, the quicker the spikes move.</p>
+
+								<p>To sense distance, we used an infrared distance sensor, which can be found <a href="http://www.sharpsma.com/webfm_send/1487" class = here><span class="label">here.</span></a>  We wire the IR sensor to power, ground, and an analog input of the arduino. Based on the sensor's voltage, we command the servos to move the spikes back and forth. The larger the sensed voltage, the quicker the spikes move. This sensor is encased in a polyurethane "eye" located on the front of the piece and sense when other people are in close proximity to the wearer.</p>
+								<p>
+								</p>
+								<p>
+								</p>
+
+								<h5>Distance Sensing Circuit Schematic</h5>
+								<div class="12u"><span class="image left"><img src="images/circuitdistance.png" alt="" /></span></div>
+								As can be seen from the simplicity of the schematic, most of the control from the IR sensor to the motion of the spikes occurs in the <a href="software.html" class = SOFTWARE><span class="label">software.</span></a>
+
+
 
 								<hr />
 
