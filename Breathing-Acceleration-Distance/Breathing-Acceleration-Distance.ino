@@ -119,7 +119,7 @@ int get_servo_R_out(int distance_in)
 
 // takes in current accelerometer sensor in mV and the output for the LEDs.
 // If the object is moving fast, then the LEDs flicker.
-int get_accel_out(int accel_in)
+int get_accel_LED_out(int accel_in)
 {
   int diff = abs(accel_in - 2500);
   int output_value = 5000;
@@ -191,7 +191,7 @@ void loop() {
 
   servo_L_out = get_servo_L_out(distanceTotal / numDistanceReadings);
   servo_R_out = get_servo_R_out(distanceTotal / numDistanceReadings);
-  accel_leds_out = get_accel_out(accelerometer_sensor_value);
+  accel_leds_out = get_accel_LED_out(accelerometer_sensor_value);
   breathing_leds_out = get_breathing_led_out(breathing_sensor_value);
   breathing_vib_out = get_breathing_vib_out(breathing_sensor_value);
 
