@@ -146,9 +146,9 @@ int get_breathing_vib_out(int breathing_in)
 
   int output_value = 0;
 
-  // if (breathing_in > 3500) {output_value = map(breathing_in, 0, 5000, 0, 3300);}
+  if (breathing_in > 3000) {output_value = map(breathing_in, 0, 5000, 0, 3300);}
 
-  output_value = map(breathing_in, 0, 5000, 0, 3300);
+  // output_value = map(breathing_in, 0, 5000, 0, 3300);
 
   return output_value;
 }
