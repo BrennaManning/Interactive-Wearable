@@ -113,15 +113,15 @@ int get_servo_R_out(int distance_in)
 int get_accel_out(int accel_in)
 {
   int diff = abs(accel_in - 2500);
-  int output_value = 0;
+  int output_value = 5000;
   if (diff > accel_threshold)
   {
-    accel_led_count = 100;
+    accel_led_count = 7;
   }
 
   if (accel_led_count > 0)
   {
-    output_value = 5000;
+    output_value = 0;
     accel_led_count = accel_led_count - 1;
   }
 
@@ -180,8 +180,8 @@ void loop() {
   // Serial.print(accelerometer_sensor_value);
   // Serial.print(". Breathing value: ");
   // Serial.print(breathing_sensor_value);
-  // Serial.print(". Distance sensor value: ");
-  // Serial.print(distanceTotal / numDistanceReadings);
+  Serial.print(". Distance sensor value: ");
+  Serial.print(distanceTotal / numDistanceReadings);
 
   distanceTotal = distanceTotal + distance_sensor_values[distanceReadIndex];
 
@@ -197,6 +197,8 @@ void loop() {
               accel_leds_out, breathing_leds_out, breathing_vib_out);
   Serial.print(". Breathing vib output: ");
   Serial.print(breathing_vib_out);
+  Serial.print(". Accel LED output: ");
+  Serial.print(accel_leds_out);
   Serial.print(". Servo output: ");
   Serial.println(servo_L_out);
 
