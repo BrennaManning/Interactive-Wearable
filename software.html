@@ -54,13 +54,12 @@
 						<section class="wrapper style5">
 							<div class="inner">
 
-								<p>We used arduino code to program our ArduinoNano. It takes sensor inputs and controls the 'visualizations'. </p>
+								<p>All control logic was handled by an Arduino Nano microcontroller soldered to our protoboard. The controller is programmed in Arduino-C. It takes sensor inputs on the analog-input pins and controls the 'visualizations' via the PWM output pins. </p>
 								<span class="image right"><img src="images/arduinonano.jpg" alt="" /></span>
 
-
-
 								<h3>Breathing Sensing and Display - Arduino</h3>
-								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+
+								<p>The Arduino reads the output of the breathing circuit through an analog read pin. The circuit outputs 5V while the fabric expands, 0V while it contracts, and a floating voltage between 0-5 while the fabric is still. The Arduino uses a cutoff value of 3V to set the output of the vibration motors and LEDs. If the read value is above 3V, the motors vibrate and the lights are on. Otherwise, they are both off.</p>
 
 								<h3>Acceleration Sensing and Display - Arduino</h3>
 								<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
@@ -219,7 +218,7 @@
 								<code>  &nbsp;delay(100);</code></br>
 								<code>	}</code></br>
 								</code>
-								
+
 
 							</div>
 						</section>
