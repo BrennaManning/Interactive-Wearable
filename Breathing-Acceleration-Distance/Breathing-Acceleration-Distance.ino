@@ -63,6 +63,7 @@ void setup()
 
   pinMode(accel_leds_out_pin, OUTPUT);
   pinMode(breathing_leds_out_pin, OUTPUT);
+  pinMode(breathing_vib_out_pin, OUTPUT);
 }
 
 
@@ -125,31 +126,24 @@ int get_accel_out(int accel_in)
     accel_led_count = accel_led_count - 1;
   }
 
-  // if (time % 1000 < 500)
-  // {
-  //   output_value = 5000;
-  // } else {
-  //   output_value = 0;
-  // }
-
   return output_value;
 }
 
 int get_breathing_led_out(int breathing_in)
 {
-
-  return map(breathing_in, 0, 5000, 0, 5000);
+  // vibrate the motors on only when the breathing sensor is above a certain
+  // threshold
+  int output_value = 0;
+  if (breathing_in > 3000) {output_value = map(breathing_in, 0, 5000, 5000, 0);}
+  return output_value;
 }
 
 int get_breathing_vib_out(int breathing_in)
 {
-
+  // vibrate the motors on only when the breathing sensor is above a certain
+  // threshold
   int output_value = 0;
-
   if (breathing_in > 3000) {output_value = map(breathing_in, 0, 5000, 0, 3300);}
-
-  // output_value = map(breathing_in, 0, 5000, 0, 3300);
-
   return output_value;
 }
 
