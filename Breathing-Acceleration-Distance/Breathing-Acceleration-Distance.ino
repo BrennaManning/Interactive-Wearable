@@ -50,6 +50,8 @@ const int servo_R_base = 80;
 const int servo_L_max = 50;
 const int servo_R_max = 50;
 
+const int updowntime = 1500;
+
 
 void setup()
 {
@@ -67,43 +69,49 @@ void setup()
 }
 
 
-// takes in current distance sensor in mV and returns the position of the servos.
+// takes in current distance sensor in mV and returns the position of the
+// servos.
 int get_servo_L_out(int distance_in)
 {
   int output_value = servo_L_base;
-  int updown = 2000;
+  int updown = updowntime;
   int restTime;
-  if (distance_in < 1000) {restTime = 3000;}
-  else if (distance_in < 1600) {restTime = 2000;}
-  else if (distance_in < 2200) {restTime = 1000;}
-  else {restTime = 0;}
+  int shortening;
+  if (distance_in < 1000) {restTime = 3000; shortening = 20;}
+  else if (distance_in < 1600) {restTime = 2000; shortening = 13;}
+  else if (distance_in < 2200) {restTime = 1000; shortening = 7;}
+  else {restTime = 0; shortening = 0;}
+  if (servo_L_max < servo_L_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
   {
     int difference = time % (updown + restTime) - (updown / 2);
-    if (difference < 0) {difference = -difference;} // because abs is fucked
+    if (difference < 0) {difference = -difference;} // because abs isn't working
     difference = updown / 2 - difference;
-    output_value = map(difference, 0, updown / 2, servo_L_base, servo_L_max);
+    output_value = map(difference, 0, updown / 2, servo_L_base, servo_L_max - shortening);
   }
   return output_value;
 
 }
 
-// takes in current distance sensor in mV and returns the position of the servos.
+// takes in current distance sensor in mV and returns the position of the
+// servos.
 int get_servo_R_out(int distance_in)
 {
   int output_value = servo_R_base;
-  int updown = 2000;
+  int updown = updowntime;
   int restTime;
-  if (distance_in < 1000) {restTime = 3000;}
-  else if (distance_in < 1600) {restTime = 2000;}
-  else if (distance_in < 2200) {restTime = 1000;}
-  else {restTime = 0;}
+  int shortening;
+  if (distance_in < 1000) {restTime = 3000; shortening = 20;}
+  else if (distance_in < 1600) {restTime = 2000; shortening = 13;}
+  else if (distance_in < 2200) {restTime = 1000; shortening = 7;}
+  else {restTime = 0; shortening = 0;}
+  if (servo_R_max < servo_R_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
   {
     int difference = time % (updown + restTime) - (updown / 2);
-    if (difference < 0) {difference = -difference;} // because abs is fucked
+    if (difference < 0) {difference = -difference;} // because abs isn't working
     difference = updown / 2 - difference;
-    output_value = map(difference, 0, updown / 2, servo_R_base, servo_R_max);
+    output_value = map(difference, 0, updown / 2, servo_R_base, servo_R_max - shortening);
   }
   return output_value;
 
@@ -159,9 +167,7 @@ void set_outputs(int servo_L_out, int servo_R_out, int accel_leds, int breathing
 void loop() {
 
   long startTime = millis();
-
   time = startTime;
-
 
   distanceTotal = distanceTotal - distance_sensor_values[distanceReadIndex];
 
