@@ -176,8 +176,8 @@ void loop() {
   // Serial.print(accelerometer_sensor_value);
   // Serial.print(". Breathing value: ");
   // Serial.print(breathing_sensor_value);
-  Serial.print(". Distance sensor value: ");
-  Serial.print(distanceTotal / numDistanceReadings);
+  // Serial.print(". Distance sensor value: ");
+  // Serial.print(distanceTotal / numDistanceReadings);
 
   distanceTotal = distanceTotal + distance_sensor_values[distanceReadIndex];
 
@@ -191,12 +191,12 @@ void loop() {
 
   set_outputs(servo_L_out, servo_R_out,
               accel_leds_out, breathing_leds_out, breathing_vib_out);
-  Serial.print(". Breathing vib output: ");
-  Serial.print(breathing_vib_out);
-  Serial.print(". Accel LED output: ");
-  Serial.print(accel_leds_out);
-  Serial.print(". Servo output: ");
-  Serial.println(servo_L_out);
+  // Serial.print(". Breathing vib output: ");
+  // Serial.print(breathing_vib_out);
+  // Serial.print(". Accel LED output: ");
+  // Serial.print(accel_leds_out);
+  // Serial.print(". Servo output: ");
+  // Serial.println(servo_L_out);
 
   distanceReadIndex = distanceReadIndex + 1;
   if (distanceReadIndex >= numDistanceReadings) {distanceReadIndex = 0;}
