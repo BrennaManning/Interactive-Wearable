@@ -158,7 +158,9 @@ void set_outputs(int servo_L_out, int servo_R_out, int accel_leds, int breathing
 
 void loop() {
 
-  time = millis();
+  long startTime = millis();
+
+  time = startTime;
 
 
   distanceTotal = distanceTotal - distance_sensor_values[distanceReadIndex];
@@ -199,5 +201,7 @@ void loop() {
   distanceReadIndex = distanceReadIndex + 1;
   if (distanceReadIndex >= numDistanceReadings) {distanceReadIndex = 0;}
 
-  delay(5);
+  time = millis();
+  long sleepTime = 5 - (time - startTime);
+  if (sleepTime > 0) {delay(sleepTime);}
 }
