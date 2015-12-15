@@ -117,7 +117,7 @@ int get_accel_out(int accel_in)
   int output_value = 5000;
   if (diff > accel_threshold)
   {
-    accel_led_count = 7;
+    accel_led_count = 20;
   }
 
   if (accel_led_count > 0)
