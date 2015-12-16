@@ -40,6 +40,7 @@ const int breathing_vib_out_pin = 11;
 const int accel_leds_out_pin = 3;
 const int breathing_leds_out_pin = 5;
 
+
 // Define input pins
 const int distance_in_pin = A1;
 const int accel_in_pin = A4;
@@ -66,6 +67,7 @@ void setup()
   pinMode(accel_leds_out_pin, OUTPUT);
   pinMode(breathing_leds_out_pin, OUTPUT);
   pinMode(breathing_vib_out_pin, OUTPUT);
+  
 }
 
 
@@ -77,9 +79,9 @@ int get_servo_L_out(int distance_in)
   int updown = updowntime;
   int restTime;
   int shortening;
-  if (distance_in < 1000) {restTime = 3000; shortening = 20;}
-  else if (distance_in < 1600) {restTime = 2000; shortening = 13;}
-  else if (distance_in < 2200) {restTime = 1000; shortening = 7;}
+  if (distance_in < 200) {restTime = 3000; shortening = 20;}
+  else if (distance_in < 220) {restTime = 2000; shortening = 13;}
+  else if (distance_in < 240) {restTime = 1000; shortening = 7;}
   else {restTime = 0; shortening = 0;}
   if (servo_L_max < servo_L_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
@@ -101,9 +103,9 @@ int get_servo_R_out(int distance_in)
   int updown = updowntime;
   int restTime;
   int shortening;
-  if (distance_in < 1000) {restTime = 3000; shortening = 20;}
-  else if (distance_in < 1600) {restTime = 2000; shortening = 13;}
-  else if (distance_in < 2200) {restTime = 1000; shortening = 7;}
+  if (distance_in < 200) {restTime = 3000; shortening = 20;}
+  else if (distance_in < 240) {restTime = 2000; shortening = 13;}
+  else if (distance_in < 260) {restTime = 1000; shortening = 7;}
   else {restTime = 0; shortening = 0;}
   if (servo_R_max < servo_R_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
@@ -172,7 +174,7 @@ void loop() {
   distanceTotal = distanceTotal - distance_sensor_values[distanceReadIndex];
 
   // read the analog in value and covert them to millivolts:
-  distance_sensor_values[distanceReadIndex] = map(analogRead(distance_in_pin), 0, 1023, 0, 5000);
+  distance_sensor_values[distanceReadIndex] = map(analogRead(distance_in_pin), 0,1023, 0, 5000);  //50-250 changed from 0-1023
   accelerometer_sensor_value = map(analogRead(accel_in_pin), 0, 1023, 0, 5000);
   breathing_sensor_value = map(analogRead(breathing_in_pin), 0, 1023, 0, 5000);
 
@@ -201,8 +203,8 @@ void loop() {
   // Serial.print(breathing_vib_out);
   // Serial.print(". Accel LED output: ");
   // Serial.print(accel_leds_out);
-  // Serial.print(". Servo output: ");
-  // Serial.println(servo_L_out);
+   Serial.print(". Servo output: ");
+   Serial.print(servo_L_out);
 
   distanceReadIndex = distanceReadIndex + 1;
   if (distanceReadIndex >= numDistanceReadings) {distanceReadIndex = 0;}
@@ -210,4 +212,9 @@ void loop() {
   time = millis();
   long sleepTime = 5 - (time - startTime);
   if (sleepTime > 0) {delay(sleepTime);}
+  
+//Serial.print("distance total =");
+//Serial.print(distanceTotal);
+Serial.print("       distance in pin=");
+Serial.println(analogRead(distance_in_pin));
 }
