@@ -46,10 +46,10 @@ const int distance_in_pin = A1;
 const int accel_in_pin = A4;
 const int breathing_in_pin = A5;
 
-const int servo_L_base = 80;
-const int servo_R_base = 80;
-const int servo_L_max = 50;
-const int servo_R_max = 50;
+const int servo_L_base = 180;
+const int servo_R_base = 70;
+const int servo_L_max = 80;
+const int servo_R_max = 20;
 
 const int updowntime = 1500;
 
@@ -79,9 +79,9 @@ int get_servo_L_out(int distance_in)
   int updown = updowntime;
   int restTime;
   int shortening;
-  if (distance_in < 200) {restTime = 3000; shortening = 20;}
-  else if (distance_in < 220) {restTime = 2000; shortening = 13;}
-  else if (distance_in < 240) {restTime = 1000; shortening = 7;}
+  if (distance_in < 1000) {restTime = 3000; shortening = 20;}
+  else if (distance_in < 1600) {restTime = 2000; shortening = 13;}
+  else if (distance_in < 2200) {restTime = 1000; shortening = 7;}
   else {restTime = 0; shortening = 0;}
   if (servo_L_max < servo_L_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
@@ -89,7 +89,7 @@ int get_servo_L_out(int distance_in)
     int difference = time % (updown + restTime) - (updown / 2);
     if (difference < 0) {difference = -difference;} // because abs isn't working
     difference = updown / 2 - difference;
-    output_value = map(difference, 0, updown / 2, servo_L_base, servo_L_max - shortening);
+    output_value = map(difference, 0, updown / 2, servo_L_base, servo_L_max );
   }
   return output_value;
 
@@ -103,9 +103,9 @@ int get_servo_R_out(int distance_in)
   int updown = updowntime;
   int restTime;
   int shortening;
-  if (distance_in < 200) {restTime = 3000; shortening = 20;}
-  else if (distance_in < 240) {restTime = 2000; shortening = 13;}
-  else if (distance_in < 260) {restTime = 1000; shortening = 7;}
+  if (distance_in < 1000) {restTime = 3000; shortening = 20;}
+  else if (distance_in < 1600) {restTime = 2000; shortening = 13;}
+  else if (distance_in < 2200) {restTime = 1000; shortening = 7;}
   else {restTime = 0; shortening = 0;}
   if (servo_R_max < servo_R_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
@@ -178,7 +178,7 @@ void loop() {
   accelerometer_sensor_value = map(analogRead(accel_in_pin), 0, 1023, 0, 5000);
   breathing_sensor_value = map(analogRead(breathing_in_pin), 0, 1023, 0, 5000);
 
-  distance_sensor_values[distanceReadIndex] = 800;
+  // distance_sensor_values[distanceReadIndex] = 800;
 
   // Serial.print("Accelerometer value: ");
   // Serial.print(accelerometer_sensor_value);
@@ -205,6 +205,8 @@ void loop() {
   // Serial.print(accel_leds_out);
    Serial.print(". Servo output: ");
    Serial.print(servo_L_out);
+   Serial.print(". Distance in:");
+   Serial.println(distanceTotal / numDistanceReadings);
 
   distanceReadIndex = distanceReadIndex + 1;
   if (distanceReadIndex >= numDistanceReadings) {distanceReadIndex = 0;}
@@ -215,6 +217,6 @@ void loop() {
   
 //Serial.print("distance total =");
 //Serial.print(distanceTotal);
-Serial.print("       distance in pin=");
-Serial.println(analogRead(distance_in_pin));
+//Serial.print("       distance in pin=");
+//Serial.println(analogRead(distance_in_pin));
 }
