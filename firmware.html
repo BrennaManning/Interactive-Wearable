@@ -63,19 +63,19 @@
 								<p>The Arduino reads the output of the breathing circuit through an analog read pin. The circuit outputs 5V while the fabric expands, 0V while it contracts, and a floating voltage between 0-5 while the fabric is still. The Arduino uses a cutoff value of 3V to set the output of the vibration motors and LEDs. If the read value is above 3V, the motors vibrate and the lights are on. Otherwise, they are both off.</p>
 
 								<h3>Acceleration Sensing and Display - Arduino</h3>
-								<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+								<p>The Arduino also uses a cutoff value for the accelerometer read out. If the read value is more than 0.7V away from 2.5 V, the lights in the spine turn on. The lights then stay on for a minimum of 15 Arduino cycles, where each cycle takes approximately 5 milliseconds. The implementation for this is that everytime the read accelerometer value is above the cutoff, a counter is set to 15. The counter is decremented every cycle. If the counter is greater than 0, the lights are on.</p>
 
 								<h3>Distance Sensing and Display - Arduino</h3>
-								<p>Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius</p>
+								<p>Our distance actuators have two modes: when the sensor detects an object and when it doesn't. If the sensor detects an object, the spikes on the shoulders continuously flutter up and down. If no object is detected, the spikes flutter slightly every 3 seconds, but not to the full height as they do when an object is detected.</p>
 
 
 								<h3>Integration</h3>
-								<p>Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius</p>
+								<p>Many of our actuations have built in time delays. However, using an actual Arduino delay statement would cause the rest of the actuators to lag and wait for the delay to finish. In order to avoid this issue, we wrote our code to ensure that each cycle ran as quickly as possible, and every sensor and actuator was read and written to every cycle. To incorporate timing in our components, we used modulus operations on the Arduino's system clock.</p>
 								<hr />
 
 								<p>All final source code is available in our <a href="https://github.com/BrennaManning/Interactive-Wearable" class="Github repository."><span class="label">Github Repository. </span></a><a href="https://github.com/BrennaManning/Interactive-Wearable" class="icon fa-github"><span class="label">Git</span></a> as well as shown in our appendix below. </p>
 								<hr />
-								
+
 
 								<h4>Code Appendix</h4>
 
