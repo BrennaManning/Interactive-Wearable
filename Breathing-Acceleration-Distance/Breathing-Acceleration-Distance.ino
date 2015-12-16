@@ -103,7 +103,7 @@ int get_accel_LED_out(int accel_in)
   int output_value = 5000;
   if (diff > accel_threshold)
   {
-    accel_led_count = 20;
+    accel_led_count = 15;
   }
 
   if (accel_led_count > 0)
@@ -119,7 +119,7 @@ int get_breathing_led_out(int breathing_in)
 {
   // vibrate the motors on only when the breathing sensor is above a certain
   // threshold
-  int output_value = 0;
+  int output_value = 5000;
   if (breathing_in > 3000) {output_value = map(breathing_in, 0, 5000, 5000, 0);}
   return output_value;
 }
@@ -161,8 +161,6 @@ void loop() {
 
   // Serial.print("Accelerometer value: ");
   // Serial.print(accelerometer_sensor_value);
-  // Serial.print(". Breathing value: ");
-  // Serial.print(breathing_sensor_value);
   // Serial.print(". Distance sensor value: ");
   // Serial.print(distanceTotal / numDistanceReadings);
 
@@ -182,6 +180,10 @@ void loop() {
   // Serial.print(breathing_vib_out);
   // Serial.print(". Accel LED output: ");
   // Serial.print(accel_leds_out);
+  Serial.print(". Breathing value: ");
+  Serial.print(breathing_sensor_value);
+  Serial.print(". Breathing output: ");
+  Serial.print(breathing_leds_out);
    Serial.print(". Servo output: ");
    Serial.print(servo_L_out);
    Serial.print(". Distance in:");
