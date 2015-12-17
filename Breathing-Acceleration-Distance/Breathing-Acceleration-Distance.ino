@@ -34,7 +34,7 @@ int distanceTotal = 0;                  // the running total
 int distanceAverage = 0;                // the average
 
 // Define output pins (PWM)
-const int servo_out_pin_L = 9;
+const int servo_out_pin_L = 6;
 const int servo_out_pin_R = 10;
 const int breathing_vib_out_pin = 11;
 const int accel_leds_out_pin = 3;
@@ -47,9 +47,9 @@ const int accel_in_pin = A4;
 const int breathing_in_pin = A5;
 
 const int servo_L_base = 180;
-const int servo_R_base = 70;
+const int servo_R_base = 65;
 const int servo_L_max = 80;
-const int servo_R_max = 20;
+const int servo_R_max = 30;
 
 const int updowntime = 1500;
 
@@ -79,7 +79,7 @@ int get_servo_out(int distance_in, int servo_base, int servo_max)
   int updown = updowntime;
   int restTime;
   int shortening;
-  if (distance_in > 1400) {restTime = 2000; shortening = 20;}
+  if (distance_in > 1250) {restTime = 0; shortening = 0;}
   else {restTime = 0; shortening = 0;}
 
   if (servo_max < servo_base) {shortening = -shortening;}
