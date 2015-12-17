@@ -26,7 +26,7 @@ int accel_led_count = 0;
 
 unsigned long time;
 
-const int numDistanceReadings = 25;
+const int numDistanceReadings = 50;
 
 int distance_sensor_values[numDistanceReadings];      // the readings from the analog input
 int distanceReadIndex = 0;              // the index of the current reading
@@ -77,6 +77,7 @@ void setup()
 // servos.
 int get_servo_out(int distance_in, int servo_base, int servo_max)
 {
+  // Serial.print("distance in ");
   // Serial.println(distance_in);
   int output_value = servo_base;
   int updown = updowntime;
@@ -85,7 +86,7 @@ int get_servo_out(int distance_in, int servo_base, int servo_max)
   long time_since = time - last_changed_time;
   if (time_since > 1000)
   {
-    boolean temp_see_something = distance_in < 1300;
+    boolean temp_see_something = distance_in < 1115;
     if (temp_see_something != see_something)
     {
       see_something = temp_see_something;
