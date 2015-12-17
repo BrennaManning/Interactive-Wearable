@@ -77,6 +77,7 @@ void setup()
 // servos.
 int get_servo_out(int distance_in, int servo_base, int servo_max)
 {
+  // Serial.println(distance_in);
   int output_value = servo_base;
   int updown = updowntime;
   int restTime;
@@ -91,7 +92,7 @@ int get_servo_out(int distance_in, int servo_base, int servo_max)
       last_changed_time = time;
     }
   }
-  
+
   if (see_something) {restTime = 0; shortening = 0; updown = 900;}
   else {restTime = 1500; shortening = 10; updown = 1500;}
 
@@ -113,15 +114,19 @@ int get_servo_out(int distance_in, int servo_base, int servo_max)
 int get_accel_LED_out(int accel_in)
 {
   int diff = abs(accel_in - 2500);
-  int output_value = 5000;
+  long output_value = 5000;
   if (diff > accel_threshold)
   {
-    accel_led_count = 15;
+    accel_led_count = 200;
   }
 
   if (accel_led_count > 0)
   {
     output_value = 0;
+    if (accel_led_count < 120)
+    {
+      output_value = 5000 / 120 * (120 - accel_led_count);
+    }
     accel_led_count = accel_led_count - 1;
   }
 
