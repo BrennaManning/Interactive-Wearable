@@ -26,11 +26,11 @@ int accel_led_count = 0;
 
 unsigned long time;
 
-const int numDistanceReadings = 5;
+const int numDistanceReadings = 25;
 
 int distance_sensor_values[numDistanceReadings];      // the readings from the analog input
 int distanceReadIndex = 0;              // the index of the current reading
-int distanceTotal = 0;                  // the running total
+long distanceTotal = 0;                  // the running total
 int distanceAverage = 0;                // the average
 
 // Define output pins (PWM)
@@ -47,12 +47,14 @@ const int accel_in_pin = A4;
 const int breathing_in_pin = A5;
 
 const int servo_L_base = 180;
-const int servo_R_base = 65;
-const int servo_L_max = 80;
-const int servo_R_max = 30;
+const int servo_R_base = 30;
+const int servo_L_max = 145;
+const int servo_R_max = 65;
 
 const int updowntime = 1500;
 
+boolean see_something;
+long last_changed_time = 0;
 
 void setup()
 {
@@ -79,8 +81,19 @@ int get_servo_out(int distance_in, int servo_base, int servo_max)
   int updown = updowntime;
   int restTime;
   int shortening;
-  if (distance_in > 1250) {restTime = 0; shortening = 0;}
-  else {restTime = 0; shortening = 0;}
+  long time_since = time - last_changed_time;
+  if (time_since > 1000)
+  {
+    boolean temp_see_something = distance_in < 1300;
+    if (temp_see_something != see_something)
+    {
+      see_something = temp_see_something;
+      last_changed_time = time;
+    }
+  }
+  
+  if (see_something) {restTime = 0; shortening = 0; updown = 900;}
+  else {restTime = 1500; shortening = 10; updown = 1500;}
 
   if (servo_max < servo_base) {shortening = -shortening;}
   if (time % (updown + restTime) < updown)
@@ -160,8 +173,8 @@ void loop() {
 
   // distance_sensor_values[distanceReadIndex] = 800;
 
-  Serial.print("Accelerometer value: ");
-  Serial.print(accelerometer_sensor_value);
+ // Serial.print("Accelerometer value: ");
+  //Serial.print(accelerometer_sensor_value);
   // Serial.print(". Distance sensor value: ");
   // Serial.print(distanceTotal / numDistanceReadings);
 
@@ -181,14 +194,14 @@ void loop() {
   // Serial.print(breathing_vib_out);
   // Serial.print(". Accel LED output: ");
   // Serial.print(accel_leds_out);
-  Serial.print(". Breathing value: ");
-  Serial.print(breathing_sensor_value);
-  Serial.print(". Breathing vib output: ");
-  Serial.print(breathing_vib_out);
-   Serial.print(". Servo output: ");
-   Serial.print(servo_L_out);
-   Serial.print(". Distance in:");
-   Serial.println(distanceTotal / numDistanceReadings);
+//  Serial.print(". Breathing value: ");
+  //Serial.print(breathing_sensor_value);
+  //Serial.print(". Breathing vib output: ");
+  //Serial.print(breathing_vib_out);
+   //Serial.print(". Servo output: ");
+   //Serial.print(servo_L_out);
+//   Serial.print(". Distance in:");
+//   Serial.println(distanceTotal / numDistanceReadings);
 
   distanceReadIndex = distanceReadIndex + 1;
   if (distanceReadIndex >= numDistanceReadings) {distanceReadIndex = 0;}
