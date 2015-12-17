@@ -34,7 +34,7 @@ long distanceTotal = 0;                  // the running total
 int distanceAverage = 0;                // the average
 
 // Define output pins (PWM)
-const int servo_out_pin_L = 6;
+const int servo_out_pin_L = 9;
 const int servo_out_pin_R = 10;
 const int breathing_vib_out_pin = 11;
 const int accel_leds_out_pin = 3;
