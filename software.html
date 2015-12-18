@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico'/>
+	<head>
+		<title>Software - Spectral by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">KRONOS</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="index.html">Home</a></li>
+											<li><a href="designprocess.html">Design Process</a></li>
+											<li><a href="mechanical.html">Mechanical</a></li>
+											<li><a href="electrical.html">Electrical</a></li>
+											<li><a href="software.html">Software</a></li>
+											<li><a href="aboutus.html">About Us</a></li>
+											<li><a href="finalproduct.html">Final Product</a></li>
+											<li><a href="financial.html">Financial</a></li>
+											<li><a href="gallery.html">Photo Gallery</a></li>
+											<li><a href="https://parasights.wordpress.com/"> Check Out Our Blog</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>Software <span class="icon fa-code"><span class="label">Lorem</span></span></h2>
+							<p>Software Engineering Component of Our Project</p>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<p>We used arduino code to program our ArduinoNano. It takes sensor inputs and controls the 'visualizations'. </p>
+								<span class="image right"><img src="images/arduinonano.jpg" alt="" /></span>
+
+
+
+								<h3>Breathing Sensing and Display - Arduino</h3>
+								<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+
+								<h3>Acceleration Sensing and Display - Arduino</h3>
+								<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+
+								<h3>Distance Sensing and Display - Arduino</h3>
+								<p>Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius</p>
+
+
+								<h3>Integration</h3>
+								<p>Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius</p>
+								<hr />
+
+								<h4>This Website</h4>
+								<p>Our team's website was created using a js html5 template.  We created the content, modifiedthe html, and modified the css from this template. </p>
+								<hr />
+								<p>All final source code is available in our <a href="https://github.com/BrennaManning/Interactive-Wearable" class="Github repository."><span class="label">Github Repository. </span></a><a href="https://github.com/BrennaManning/Interactive-Wearable" class="icon fa-github"><span class="label">Git</span></a> as well as shown in our appendix below. </p>
+
+								<h4>Code Appendix</h4>
+
+								<h6>Arduino Control:Breathing-Acceleration-Distance.ino</h6>
+								<code>#include <Servo.h> </code></br>
+
+ 								<code>Servo servo_L; </code></br>
+ 								<code>Servo servo_R; </code></br>
+
+ 								<code>int servo_L_pos = 0; </code></br>
+								<code>int servo_R_pos = 0;</code></br>
+								<code>int brightness = 255;</code></br>
+								<code>int accelerometer_sensor_value = 0;</code></br>
+								<code>int breathing_sensor_value = 0; </code></br>
+
+								<code>int servo_out = 0;   // value output to the PWM (analog out)</code></br>
+								<code>int accel_leds_out = 0;        // value output to the PWM (analog out)</code></br>
+								<code>int breathing_leds_out = 0;        // value output to the PWM (analog out)</code></br>
+
+								<code>int accel_threshold = 700; // voltage diff at which to turn LEDs on.</code></br>
+								<code>int distance_threshold = 250; // voltage diff at which to turn LEDs on.</code></br>
+								<code>int distance_max = 3000; // max voltage the distance sensor outputs.</code></br>
+
+								<code>unsigned long time;</code></br>
+
+								<code>const int numDistanceReadings = 5;</code></br>
+
+								<code>int distance_sensor_values[numDistanceReadings];      // the readings from the analog input</code></br>
+								<code>int distanceTotal = 0;                  // the running total</code></br>
+								<code>int distanceAverage = 0;                // the average</code></br>
+
+								<code>// Define output pins (PWM)</code></br>
+								<code>const int servo_out_pin_L = 9;</code></br>
+								<code>const int servo_out_pin_R = 10;</code></br>
+								<code>const int accel_leds_out_pin = 3;</code></br>
+								<code>const int breathing_leds_out_pin = 5;</code></br>
+
+								<code>// Define input </code></br>
+								<code>const int distance_in_pin = A1;</code></br>
+								<code>const int accel_in_pin = A4;</code></br>
+								<code>const int breathing_in_pin = A5;</code></br>
+
+
+								<code>void setup()</code></br>
+								<code>{</code></br>
+  								<code>&nbsp; Serial.begin(9600);           // set up Serial library at 9600 bps</code></br>
+  								<code>&nbsp; servo_L.attach(servo_out_pin_L);</code></br>
+  								<code>&nbsp; servo_R.attach(servo_out_pin_R);</code></br>
+
+								<code> &nbsp;  for (int thisReading = 0; thisReading < numDistanceReadings; thisReading++) {</code></br>
+    							<code>&nbsp; &nbsp; distance_sensor_values[thisReading] = 0;</code></br>
+  								<code>&nbsp;}</code></br>
+
+  								<code>&nbsp;pinMode(accel_leds_out_pin, OUTPUT);</code></br>
+  								<code>&nbsp;pinMode(breathing_leds_out_pin, OUTPUT);</code></br>
+								<code>}</code></br>
+
+
+								<code>// takes in current distance sensor in mV and returns the position of the servos.</code></br>
+								<code>int get_distance_out(int distance_in)</code></br>
+								<code>{</code></br>
+  								<code>&nbsp;int output_value = 0;</code></br>
+  								<code>&nbsp;int updown = 2000; </code></br>
+  								<code>&nbsp;int restTime;</code></br>
+  								<code>&nbsp;if (distance_in < 1000) {restTime = 3000;}</code></br>
+  								<code>&nbsp;else if (distance_in < 1600) {restTime = 2000;}</code></br>
+  								<code>&nbsp;else if (distance_in < 2200) {restTime = 1000;}</code></br>
+  								<code>&nbsp;else {restTime = 0;}</code></br>
+  								<code>&nbsp;if (time % (updown + restTime) < updown)</code></br>
+  								<code>&nbsp;{</code></br>
+    							<code>&nbsp;&nbsp;int difference = time % (updown + restTime) - (updown / 2);</code></br>
+							    <code>&nbsp;&nbsp;if (difference < 0) {difference = -difference;} // </code></br>
+							    <code>&nbsp;&nbsp;difference = updown / 2 - difference;</code></br>
+							    <code>&nbsp;&nbsp;output_value = difference;</code></br>
+							    <code>&nbsp;&nbsp;output_value = map(difference, 0, updown / 2, 0, 60);</code></br>
+  								<code>&nbsp;}</code></br>
+
+								<code>&nbsp;return output_value;</code></br>
+
+								<code>}</code></br>
+
+								<code>// takes in current accelerometer sensor in mV and the output for the LEDs.</code></br>
+								<code>// If the object is moving fast, then the LEDs flicker.</code></br>
+								<code>int get_accel_out(int accel_in)</code></br>
+								<code>{</code></br>
+								<code>  &nbsp;int diff = abs(accel_in - 2500);</code></br>
+								<code>  &nbsp;int output_value = 0; </code></br>
+								<code>  &nbsp;if (diff > accel_threshold)</code></br>
+								<code>  &nbsp;{</code></br>
+								<code>  &nbsp;&nbsp;output_value = 5000;</code></br>
+								<code>  &nbsp;}</code></br>
+
+								<code>  &nbsp;if (time % 1000 < 500)</code></br>
+								<code>  &nbsp;{</code></br>
+							    <code>&nbsp;&nbsp;output_value = 5000;</code></br>
+								<code>  &nbsp;} else {</code></br>
+								<code>&nbsp;output_value = 0;</code></br>
+								<code>  }</code></br>
+
+								<code>  &nbsp;return output_value;</code></br>
+								<code>}</code></br>
+
+								<code>int get_breathing_out(int breathing_in)</code></br>
+								<code>{</code></br>
+
+								<code>&nbsp;  return breathing_in;</code></br>
+								<code>}</code></br>
+
+								<code>void set_outputs(int servo_out, int accel_leds, int breathing_out)</code></br>
+								<code>{</code></br>
+								<code>  &nbsp;analogWrite(accel_leds_out_pin, map(accel_leds, 0, 5000, 0, brightness));</code></br>
+								<code>&nbsp;// read the analog in value and covert them to millivolts:</code></br>
+								<code>  &nbsp;distance_sensor_values[distanceReadIndex] = map(analogRead(distance_in_pin), 0, 1023, 0, 5000);</code></br>
+								<code>  &nbsp;accelerometer_sensor_value = map(analogRead(accel_in_pin), 0, 1023, 0, 5000);</code></br>
+								<code>  &nbsp;breathing_sensor_value = map(analogRead(breathing_in_pin), 0, 1023, 0, 5000);</code></br>
+
+								<code>  &nbsp;Serial.print("Accelerometer value: ");</code></br>
+								<code>  &nbsp;Serial.print(accelerometer_sensor_value);</code></br>
+								<code>  &nbsp;Serial.print(". Breathing value: ");</code></br>
+								<code>  &nbsp;Serial.print(breathing_sensor_value);</code></br>
+								<code>  &nbsp;Serial.print(". Distance sensor value: ");</code></br>
+								<code>  &nbsp;Serial.print(distanceTotal / numDistanceReadings);</code></br>
+
+								<code>  &nbsp;distanceTotal = distanceTotal + distance_sensor_values[distanceReadIndex];</code></br>
+
+								<code>  &nbsp;// distance_sensor_value = 700;</code></br>
+
+								<code>  &nbsp;servo_out = get_distance_out(distanceTotal / numDistanceReadings);</code></br>
+								<code>  &nbsp;accel_leds_out = get_accel_out(accelerometer_sensor_value); </code></br>
+								<code>  &nbsp;breathing_leds_out = get_breathing_out(breathing_sensor_value); </code></br>
+
+								<code>  &nbsp;set_outputs(servo_out,</code></br>
+            					<code>  &nbsp;accel_leds_out, breathing_leds_out);</code></br>
+  								<code> &nbsp;Serial.print(". Servo output: ");</code></br>
+								<code>  &nbsp;Serial.println(servo_out); </code></br>
+
+								<code>  &nbsp;distanceReadIndex = distanceReadIndex + 1;</code></br>
+								<code>  &nbsp;if (distanceReadIndex >= numDistanceReadings) {distanceReadIndex = 0;}</code></br>
+
+								<code>  &nbsp;delay(100);</code></br>
+								<code>	}</code></br>
+								</code>
+								
+
+							</div>
+						</section>
+					</article>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="index.html" class="icon fa-home"><span class="label">Home</span></a></li>
+							<li><a href="designprocess.html" class="icon fa-users"><span class="label">Home</span></a></li>
+							<li><a href="mechanical.html" class="icon fa-gears"><span class="label">Mechanical</span></a></li>
+							<li><a href="electrical.html" class="icon fa-flash"><span class="label">Electrical</span></a></li>
+							<li><a href="software.html" class="icon fa-code"><span class="label">Software</span></a></li>
+							<li><a href="aboutus.html" class="icon fa-heart"><span class="label">AboutUs</span></a></li>
+							<li><a href="mailto:david.abrahams@students.olin.edu;mikhaela.dietch@students.olin.edu;shane.kelly@students.olin.edu;brenna.manning@students.olin.edu;alix.mccabe@students.olin.edu" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+							<li><a href="https://github.com/BrennaManning/Interactive-Wearable" class="icon fa-github"><span class="label">Git</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
